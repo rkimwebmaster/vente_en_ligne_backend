@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit MobileMoney{% endblock %}
+
+{% block body %}
+    <h1>Edit MobileMoney</h1>
+
+    {{ include('mobile_money/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_mobile_money_index') }}">back to list</a>
+
+    {{ include('mobile_money/_delete_form.html.twig') }}
+{% endblock %}

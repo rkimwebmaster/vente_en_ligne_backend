@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Annulation{% endblock %}
+
+{% block body %}
+    <h1>Create new Annulation</h1>
+
+    {{ include('annulation/_form.html.twig') }}
+
+    <a href="{{ path('app_annulation_index') }}">back to list</a>
+{% endblock %}

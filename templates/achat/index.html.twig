@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Achat index{% endblock %}
+
+{% block body %}
+    <h1>Achat index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>DateAchat</th>
+                <th>DateLivraison</th>
+                <th>PrixTotal</th>
+                <th>NumeroReference</th>
+                <th>IsApprouve</th>
+                <th>IsAnnule</th>
+                <th>IsEnCours</th>
+                <th>IsPaye</th>
+                <th>IsLivre</th>
+                <th>CreatedAt</th>
+                <th>UpdatedAt</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for achat in achats %}
+            <tr>
+                <td>{{ achat.id }}</td>
+                <td>{{ achat.dateAchat ? achat.dateAchat|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ achat.dateLivraison ? achat.dateLivraison|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ achat.prixTotal }}</td>
+                <td>{{ achat.numeroReference }}</td>
+                <td>{{ achat.isApprouve ? 'Yes' : 'No' }}</td>
+                <td>{{ achat.isAnnule ? 'Yes' : 'No' }}</td>
+                <td>{{ achat.isEnCours ? 'Yes' : 'No' }}</td>
+                <td>{{ achat.isPaye ? 'Yes' : 'No' }}</td>
+                <td>{{ achat.isLivre ? 'Yes' : 'No' }}</td>
+                <td>{{ achat.createdAt ? achat.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ achat.updatedAt ? achat.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('app_achat_show', {'id': achat.id}) }}">show</a>
+                    <a href="{{ path('app_achat_edit', {'id': achat.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="13">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_achat_new') }}">Create new</a>
+{% endblock %}

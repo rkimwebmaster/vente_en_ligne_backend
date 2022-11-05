@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}MobileMoney index{% endblock %}
+
+{% block body %}
+    <h1>MobileMoney index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Designation</th>
+                <th>Description</th>
+                <th>CreatedAt</th>
+                <th>UpdatedAt</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for mobile_money in mobile_moneys %}
+            <tr>
+                <td>{{ mobile_money.id }}</td>
+                <td>{{ mobile_money.designation }}</td>
+                <td>{{ mobile_money.description }}</td>
+                <td>{{ mobile_money.createdAt ? mobile_money.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ mobile_money.updatedAt ? mobile_money.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('app_mobile_money_show', {'id': mobile_money.id}) }}">show</a>
+                    <a href="{{ path('app_mobile_money_edit', {'id': mobile_money.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_mobile_money_new') }}">Create new</a>
+{% endblock %}
